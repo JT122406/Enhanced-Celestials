@@ -15,7 +15,7 @@ public interface RegistrationService {
     <T> Registry<T> createSimpleBuiltin(ResourceKey<Registry<T>> registryKey);
 
 
-    <T> Supplier<T> register(Registry<T> registry, String name, Supplier<T> value);
+    <T> Supplier<T> register(Registry<? super T> registry, String name, Supplier<T> value);
 
 
     <T> void registerDatapackRegistry(ResourceKey<Registry<T>> key, Supplier<Codec<T>> codec);

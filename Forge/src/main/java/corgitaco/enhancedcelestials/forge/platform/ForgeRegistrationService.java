@@ -23,7 +23,7 @@ public class ForgeRegistrationService implements RegistrationService {
 
     public static final List<Consumer<DataPackRegistryEvent.NewRegistry>> DATAPACK_REGISTRIES = new ArrayList<>();
 
-    public static final Map<ResourceKey, DeferredRegister> CACHED = new Reference2ObjectOpenHashMap<>();
+    public static final Map<ResourceKey<?>, DeferredRegister> CACHED = new Reference2ObjectOpenHashMap<>();
 
 
     @Override
@@ -41,7 +41,7 @@ public class ForgeRegistrationService implements RegistrationService {
     }
 
     @Override
-    public <T> Supplier<T> register(Registry<T> registry, String location, Supplier<T> value) {
+    public <T> Supplier<T> register(Registry<? super T> registry, String location, Supplier<T> value) {
         return CACHED.computeIfAbsent(registry.key(), key -> DeferredRegister.create(registry.key().location(), EnhancedCelestials.MOD_ID)).register(location, value);
     }
 

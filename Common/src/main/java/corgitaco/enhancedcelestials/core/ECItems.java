@@ -27,7 +27,7 @@ public final class ECItems {
     }
 
     public static <B extends Item> Supplier<B> register(String id, Supplier<B> item) {
-        return RegistrationService.INSTANCE.register((net.minecraft.core.Registry<B>) BuiltInRegistries.ITEM, id, item);
+        return RegistrationService.INSTANCE.register(BuiltInRegistries.ITEM, id, item);
     }
 
     private static Item.Properties createProperties() {

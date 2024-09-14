@@ -21,7 +21,7 @@ public class FabricRegistrationService implements RegistrationService {
     }
 
     @Override
-    public <T> Supplier<T> register(Registry<T> registry, String name, Supplier<T> value) {
+    public <T> Supplier<T> register(Registry<? super T> registry, String name, Supplier<T> value) {
         T register = Registry.register(registry, EnhancedCelestials.createLocation(name), value.get());
         return () -> register;
     }

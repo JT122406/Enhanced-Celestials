@@ -22,7 +22,7 @@ public final class ECBlocks {
     }
 
     public static <B extends Block> Supplier<B> register(String id, Supplier<B> block) {
-        return RegistrationService.INSTANCE.register((net.minecraft.core.Registry<B>) BuiltInRegistries.BLOCK, id, block);
+        return RegistrationService.INSTANCE.register(BuiltInRegistries.BLOCK, id, block);
     }
 
     public static void classLoad() {
